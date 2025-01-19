@@ -94,22 +94,6 @@
             isPlaying = !isPlaying;
         }
 
-        function startCountdown(startDate) {
-            const targetDate = new Date(startDate);
-            const countdownElement = document.getElementById('countdown');
-
-            function updateCountdown() {
-                const now = new Date();
-                const elapsed = Math.floor((now - targetDate) / 1000);
-
-                const days = Math.floor(elapsed / (3600 * 24));
-                const hours = Math.floor((elapsed % (3600 * 24)) / 3600);
-                const minutes = Math.floor((elapsed % 3600) / 60);
-                const seconds = elapsed % 60;
-
-                countdownElement.textContent = `Süre: ${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye geçti.`;
-            }
-
             updateCountdown();
             setInterval(updateCountdown, 1000);
         }
