@@ -1,4 +1,148 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nevra Samet</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+            background: #000;
+            overflow-x: hidden;
+        }
+        header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .header-content {
+            z-index: 1;
+            max-width: 800px;
+        }
+        .header-content h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .header-content p {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        .gallery {
+            padding: 20px;
+            background: #111;
+        }
+        .gallery h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        .gallery-grid img, .gallery-grid video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .music-controls {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .music-controls button {
+            background: #444;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .music-controls button:hover {
+            background: #555;
+        }
+    </style>
+    <script>
+        let isPlaying = true;
+        function toggleMusic() {
+            const audio = document.getElementById('background-music');
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function startCountdown(startDate) {
+            const targetDate = new Date(startDate);
+            const countdownElement = document.getElementById('countdown');
+
+            function updateCountdown() {
+                const now = new Date();
+                const elapsed = Math.floor((now - targetDate) / 1000);
+
+                const days = Math.floor(elapsed / (3600 * 24));
+                const hours = Math.floor((elapsed % (3600 * 24)) / 3600);
+                const minutes = Math.floor((elapsed % 3600) / 60);
+                const seconds = elapsed % 60;
+
+                countdownElement.textContent = `Süre: ${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye geçti.`;
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+    </script>
+</head>
+<body onload="startCountdown('2024-01-01T00:00:00')">
+    <audio id="background-music" autoplay loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <header>
+        <video class="background-video" autoplay muted loop>
+            <source src="background-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="header-content">
+            <h1>Nevra Samet</h1>
+            <p>"Her denizin bir kıyısı vardır"</p>
+            <p id="countdown"></p>
+        </div>
+    </header>
+    <section class="gallery">
+        <h2>Fotoğraf ve Video Galerisi</h2>
+        <div class="gallery-grid">
+            <!-- Fotoğraf ve videolar burada -->
+        </div>
+    </section>
+    <div class="music-controls">
+        <button onclick="toggleMusic()">Müzigi Durdur/Başlat</button>
+    </div>
+</body>
+</html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
