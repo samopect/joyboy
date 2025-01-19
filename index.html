@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,13 +21,13 @@
             align-items: center;
             background: rgba(0, 0, 0, 0.6);
         }
-        header::before {
-            content: "";
+        header video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            object-fit: cover;
             z-index: -1;
         }
         .header-content {
@@ -81,114 +80,7 @@
         .music-controls button:hover {
             background: #555;
         }
-    </style>
-    <script>
-        let isPlaying = true;
-        function toggleMusic() {
-            const audio = document.getElementById('background-music');
-            if (isPlaying) {
-                audio.pause();
-            } else {
-                audio.play();
-            }
-            isPlaying = !isPlaying;
-        }
-
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        }
-    </script>
-</head>
-<body onload="startCountdown('2025-01-01T00:00:00')">
-    <audio id="background-music" autoplay loop>
-        <source src="DURULDUM.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    <header>
-        <video class="background-video" autoplay muted loop>
-            <source src="background-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </header>
-    <section class="gallery">
-        <h2>Fotoğraf ve Video Galerisi</h2>
-        <div class="gallery-grid">
-            <!-- Fotoğraf ve videolar burada -->
-        </div>
-    </section>
-    <div class="music-controls">
-        <button onclick="toggleMusic()">Müzigi Durdur/Başlat</button>
-    </div>
-</body>
-</html>
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nevra  Samet</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: #fff;
-            text-align: center;
-            background: #000;
-            overflow-x: hidden;
-        }
-        header {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.6);
-        }
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("arkaplan.mp4"video 2.mp4"")
-            z-index: -1;
-            animation: changeBackground 20s infinite;
-        }
-        @keyframes changeBackground {
-            0% { background: url("arkaplan.mp4") no-repeat center center/cover; }
-        }
-        .header-content {
-            z-index: 1;
-            max-width: 800px;
-        }
-        .header-content h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
-        .header-content p {
-            font-size: 1.5rem;
-            margin: 10px 0;
-        }
-        .gallery {
-            padding: 20px;
-            background: #111;
-        }
-        .gallery h2 {
-            margin-bottom: 20px;
-            font-size: 2rem;
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 10px;
-        }
-        .gallery-grid img, .gallery-grid video {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-		.login-container {
+        .login-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -238,7 +130,17 @@
                 alert('Kullanıcı adı veya şifre yanlış!');
             }
         }
-		function startCountdown(startDate) {
+
+        function toggleMusic() {
+            const audio = document.getElementById('background-music');
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        function startCountdown(startDate) {
             const targetDate = new Date(startDate);
             const countdownElement = document.getElementById('countdown');
 
@@ -259,66 +161,60 @@
         }
     </script>
 </head>
-	<div id="content">
+<body onload="startCountdown('2025-01-01T00:00:00')">
+    <!-- Arka Plan Müziği -->
+    <audio id="background-music" autoplay loop>
+        <source src="DURULDUM.mp3" type="audio/mpeg">
+        Tarayıcınız bu ses dosyasını desteklemiyor.
+    </audio>
+
+    <!-- Giriş Ekranı -->
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Giriş Yap</h2>
+            <form onsubmit="checkLogin(event)">
+                <input type="text" id="username" placeholder="Kullanıcı Adı" required>
+                <input type="password" id="password" placeholder="Şifre" required>
+                <button type="submit">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Başlık -->
     <header>
         <video class="background-video" autoplay muted loop>
-            <source src="background-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+            <source src="arkaplan.mp4" type="video/mp4">
+            Tarayıcınız bu video formatını desteklemiyor.
         </video>
-      
+        <div class="header-content">
+            <h1>Nevra Samet</h1>
+            <p>"Her denizin bir kıyısı vardır"</p>
+        </div>
     </header>
-<div class="login-container">
-    <div class="login-box">
-        <h2>Giriş Yap</h2>
-        <form onsubmit="checkLogin(event)">
-            <input type="text" id="username" placeholder="Kullanıcı Adı" required>
-            <input type="password" id="password" placeholder="Şifre" required>
-            <button type="submit">Giriş Yap</button>
-        </form>
-    </div>
-</div>
-   
-<body>
 
-<header>
-	 <video class="background-video" autoplay muted loop>
-        <source src="videolar/video 2.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <div class="header-content">
-        <h1>Nevra Samet</h1>
-        <p>"Her denizin bir kıyısı vardır"</p>
-    </div>
-</header>
+    <!-- Galeri -->
+    <section class="gallery">
+        <h2>Fotoğraf ve Video Galerisi</h2>
+        <div class="gallery-grid">
+            <!-- Fotoğraflar -->
+            <img src="foto 1.jpg" alt="Nevra ve Samet">
+            <img src="foto2.jpg" alt="Nevra ve Samet">
+            <img src="foto 3.jpg" alt="Nevra ve Samet">
+  <img src="foto 4.jpg" alt="Nevra ve Samet">
+		  <img src="foto5.jpg" alt="Nevra ve Samet">
+		  <img src="foto6.jpg" alt="Nevra ve Samet">
+            <!-- Videolar -->
+            <video src="video1.mp4" controls></video>
+            <video src="video2.mp4" controls></video>
+        </div>
+    </section>
 
-<section class="gallery">
-    <h2>Fotoğraf ve Video Galerisi</h2>
-    <div class="gallery-grid">
-        <!-- Fotoğraflar -->
-        <img src="foto 1.jpg" alt="Nevra ve Samet">
-        <img src="foto2.jpg" alt="Nevra ve Samet">
-        <img src="foto 3.jpg" alt="Nevra ve Samet">
-        <img src="foto 4.jpg" alt="Nevra ve Samet">
-        <img src="foto5.jpg" alt="Nevra ve Samet">
-        <img src="foto6.jpg" alt="Nevra ve Samet">
-        <img src="photo7.jpg" alt="Nevra ve Samet">
-        <img src="photo8.jpg" alt="Nevra ve Samet">
-        <img src="photo9.jpg" alt="Nevra ve Samet">
-        <img src="photo10.jpg" alt="Nevra ve Samet">
-
-        <!-- Videolar -->
-        <video src="WhatsApp Video 2025-01-19 saat 03.18.41_8b6498ef.mp4" controls></video>
-        <video src="video 2.mp4" controls></video>
-        <video src="video 3.mp4" controls></video>
-        <video src="video4.mp4"  controls></video>
-        <video src="video 5.mp4" controls></video>
-        <video src="video 6.mp4" controls></video>
-        <video src="video 7.mp4" controls></video>
-        <video src="video 8.mp4" controls></video>
-		<video src="video9.mp4" controls></video>
-	    <video src="video 14.mp4" controls></video>
-	   
+    <!-- Müzik Kontrolleri -->
+    <div class="music-controls">
+        <button onclick="toggleMusic()">Müziği Durdur/Başlat</button>
     </div>
-</section>
-	</body>
+
+    <!-- Sayaç -->
+    <p id="countdown"></p>
+</body>
 </html>
